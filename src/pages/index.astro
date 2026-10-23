@@ -1,0 +1,162 @@
+---
+import '../styles/global.css';
+import { Image } from 'astro:assets';
+import profile from '../../Profile.jpg';
+
+const socials = [
+  { name: 'GitHub', url: 'https://github.com/Tanadepon', path: 'M12 .5a12 12 0 0 0-3.79 23.38c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.63-5.49 5.93.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z' },
+  { name: 'X', url: 'https://x.com/nuatnk?s=11', path: 'M18.9 2H22l-6.78 7.75L23.2 22h-6.25l-4.9-7.43L5.55 22H2.42l7.25-8.29L1.8 2h6.41l4.43 6.76L18.9 2Zm-1.1 18h1.73L7.27 3.9H5.41L17.8 20Z' },
+  { name: 'Instagram', url: 'https://www.instagram.com/nnua_?mdxt=MTU4dDlrZ3AyMW8=', path: '' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/tanadepon-tanakawin-264445255/', path: 'M5.4 7.5H2V22h3.4ZM3.7 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM22 13.7c0-4.35-4.65-5.6-7.2-2.85V7.5h-3.4V22h3.4v-7.7c0-3.3 3.8-3.6 3.8 0V22H22Z' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Tanakawin Tanadepon — Mechanical Engineering PhD, Bangkok, Thailand." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <title>Tanakawin Tanadepon | Portfolio</title>
+  </head>
+  <body>
+    <header class="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-[3.6%] py-8">
+      <a class="header-brand" href="/" aria-label="TNP home"><span>TNP</span></a>
+      <nav aria-label="Main navigation" class="flex flex-wrap justify-end gap-x-5 gap-y-2 text-[17px]">
+        {['About', 'Publication', 'Project', 'Contact'].map((label) => (
+          label === 'About' ? <a href="#about">{label}</a> :
+          label === 'Contact' ? <a href="mailto:tanadepon.tk@gmail.com">{label}</a> :
+            <button type="button" data-notice={`${label} content is coming soon.`}>{label}</button>
+        ))}
+      </nav>
+    </header>
+    <main class="mx-auto max-w-[1440px] px-[3.6%] pb-12 pt-5">
+      <section class="hero" aria-labelledby="name">
+        <div class="portrait">
+          <Image src={profile} alt="Tanakawin Tanadepon wearing a suit and graduation gown" widths={[640, 960, 1280]} sizes="(max-width: 760px) 100vw, 50vw" width={1280} loading="eager" fetchpriority="high" />
+        </div>
+        <div class="hero-content">
+          <h1 id="name">TANAKAWIN<br />TANADEPON</h1>
+          <p class="specialty">Mechanical Engineering PhD</p>
+          <p class="location">Bangkok, Thailand</p>
+          <div class="contact">
+            <a class="email" href="mailto:tanadepon.tk@gmail.com">tanadepon.tk@gmail.com</a>
+            <div class="my-3 flex gap-2" aria-label="Social profiles">
+              {socials.map(({ name, url, path }) => (
+                <a class="social" href={url} target="_blank" rel="noopener noreferrer" aria-label={`${name} profile (opens in a new tab)`}>
+                  <svg viewBox="0 0 24 24" width="23" height="23" aria-hidden="true" fill="currentColor">
+                    {name === 'Instagram' ? <>
+                      <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2" />
+                      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                      <circle cx="17.5" cy="6.5" r="1.2" />
+                    </> : <path d={path} />}
+                  </svg>
+                </a>
+              ))}
+            </div>
+            <div class="actions">
+              <a href="#about">Explore</a>
+              <button class="cv" type="button" data-notice="The CV will be available soon.">Download CV</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="about" class="about" aria-labelledby="about-title">
+        <div class="about-heading">
+          <span class="about-rule" aria-hidden="true"></span>
+          <h2 id="about-title">About me</h2>
+        </div>
+        <div class="about-copy">
+          <p class="about-intro">Hello! Welcome to my digital space!</p>
+          <p>I am a PhD student at Chulalongkorn University, Thailand. My ongoing research focuses on legged robotic systems, control, and reinforcement learning. I am also a solo developer designing mobile applications that provide practical solutions for people in Thailand.</p>
+          <p>I love technology and am passionate about exploring new ideas and turning them into reality!</p>
+        </div>
+      </section>
+      <section class="education" aria-labelledby="education-title">
+        <div class="about-heading">
+          <span class="about-rule" aria-hidden="true"></span>
+          <h2 id="education-title">Education</h2>
+        </div>
+        <ol class="education-timeline">
+          <li>
+            <svg class="education-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10 12 5l10 5-10 5-10-5Z" /><path d="M6 12v5c3.5 2.5 8.5 2.5 12 0v-5M22 10v6" /></svg>
+            <div class="education-entry">
+              <div>
+                <h3>B.Eng. in Automotive Engineering</h3>
+                <p>Chulalongkorn University</p>
+              </div>
+              <span class="education-date">2020–2024</span>
+            </div>
+          </li>
+          <li>
+            <svg class="education-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10 12 5l10 5-10 5-10-5Z" /><path d="M6 12v5c3.5 2.5 8.5 2.5 12 0v-5M22 10v6" /></svg>
+            <div class="education-entry">
+              <div>
+                <h3>M.Eng. in Mechanical Engineering</h3>
+                <p>Chulalongkorn University</p>
+              </div>
+              <span class="education-date">2024–2026</span>
+            </div>
+          </li>
+          <li>
+            <svg class="education-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10 12 5l10 5-10 5-10-5Z" /><path d="M6 12v5c3.5 2.5 8.5 2.5 12 0v-5M22 10v6" /></svg>
+            <div class="education-entry">
+              <div>
+                <h3>PhD in Mechanical Engineering</h3>
+                <p>Chulalongkorn University</p>
+              </div>
+              <span class="education-date">2026–Present</span>
+            </div>
+          </li>
+        </ol>
+      </section>
+    </main>
+    <footer class="site-footer" id="footer">
+      <div class="footer-inner">
+        <div class="footer-main">
+          <div>
+            <a class="footer-mark" href="/" aria-label="TNP home">TNP</a>
+          </div>
+          <div class="footer-links">
+            <div>
+              <h2>Navigate</h2>
+              <a href="#about">About me</a>
+              <a href="#education-title">Education</a>
+              <a href="#name">Back to top ↑</a>
+            </div>
+            <div>
+              <h2>Connect</h2>
+              <a href="mailto:tanadepon.tk@gmail.com">Email</a>
+              {socials.map(({ name, url }) => (
+                <a href={url} target="_blank" rel="noopener noreferrer">{name}<span class="sr-only"> (opens in a new tab)</span></a>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© {new Date().getFullYear()} Tanakawin Tanadepon. All rights reserved.</span>
+          <span>Bangkok, Thailand</span>
+        </div>
+      </div>
+    </footer>
+    <dialog id="notice" aria-labelledby="notice-title">
+      <h2 id="notice-title">Coming soon</h2>
+      <p id="notice-message"></p>
+      <form method="dialog"><button type="submit">Close</button></form>
+    </dialog>
+    <script>
+      const dialog = document.querySelector<HTMLDialogElement>('#notice');
+      const message = document.querySelector<HTMLElement>('#notice-message');
+      document.querySelectorAll<HTMLButtonElement>('[data-notice]').forEach((button) => {
+        button.addEventListener('click', () => {
+          if (!dialog || !message) return;
+          message.textContent = button.dataset.notice ?? '';
+          dialog.showModal();
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse 65% 42% at 8% 7%, rgb(226 231 231 / 40%), transparent 75%),
+    radial-gradient(ellipse 55% 38% at 95% 78%, rgb(234 226 216 / 35%), transparent 75%),
+    #f8f8f6;
+  color: #111;
+  font-family: Manrope, "Segoe UI", Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #555;
+  outline-offset: 6px;
+}
+
+button { cursor: pointer; }
+.header-brand { position: relative; display: inline-flex; align-items: center; min-height: 40px; padding: 0 4px; font-family: "Space Grotesk", Manrope, sans-serif; font-size: 29px; font-weight: 700; line-height: 1; letter-spacing: -.065em; }
+.header-brand span { transition: transform .25s ease, letter-spacing .25s ease; }
+.header-brand::after { content: ''; position: absolute; right: 4px; bottom: 2px; left: 4px; height: 2px; background: currentColor; transform: scaleX(.28); transform-origin: left; transition: transform .3s ease; }
+.header-brand:hover span { transform: translateY(-3px); letter-spacing: -.025em; }
+.header-brand:hover::after { transform: scaleX(1); }
+nav button, nav a { transition: opacity .2s ease; }
+nav button:hover, nav a:hover { opacity: .58; }
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 44px;
+  background: #000;
+  color: #fff;
+  min-height: 444px;
+}
+
+.portrait {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 50%;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+}
+
+.portrait::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 20%, rgb(0 0 0 / 8%) 35%, rgb(0 0 0 / 30%) 50%, rgb(0 0 0 / 65%) 68%, rgb(0 0 0 / 92%) 85%, #000 100%);
+}
+
+.hero-content {
+  position: relative;
+  margin-left: 49%;
+  padding: 36px 28px 30px;
+}
+
+h1 {
+  font-family: "Space Grotesk", Manrope, sans-serif;
+  font-size: clamp(36px, 5.85vw, 78px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -.055em;
+}
+
+.specialty { margin-top: 12px; font-size: clamp(20px, 2.35vw, 31px); font-weight: 400; line-height: 1.3; letter-spacing: -.025em; }
+.location { font-size: 21px; line-height: 1.4; }
+.contact { margin-top: 28px; }
+.email { font-size: 16px; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.email:hover { text-decoration: underline; }
+.social { display: grid; place-items: center; width: 44px; height: 44px; color: #fff; transition: opacity .2s ease, transform .2s ease; }
+.social:hover { opacity: .7; transform: translateY(-2px); }
+.actions { display: flex; gap: 20px; max-width: 413px; margin-top: 16px; }
+.actions button, .actions a { display: grid; place-items: center; flex: 1; min-height: 45px; padding: 8px; background: #fff; color: #000; font-size: 18px; font-weight: 650; text-align: center; transition: background .2s ease; }
+.actions button:hover, .actions a:hover { background: #e5e5e5; }
+.actions .cv { background: #444; color: #fff; }
+.actions .cv:hover { background: #666; }
+
+.about { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr); gap: 8%; padding: 100px 5% 72px; scroll-margin-top: 28px; }
+.about-heading { display: flex; align-items: flex-start; gap: 18px; padding-top: 9px; }
+.about-rule { width: 35px; height: 2px; margin-top: 16px; background: #111; }
+.about-heading h2 { font-family: "Space Grotesk", Manrope, sans-serif; font-size: clamp(26px, 3vw, 38px); font-weight: 600; letter-spacing: -.045em; line-height: 1.1; white-space: nowrap; }
+.about-copy { max-width: 760px; font-size: clamp(17px, 1.55vw, 21px); line-height: 1.75; color: #424242; }
+.about-copy p + p { margin-top: 22px; }
+.about-copy .about-intro { color: #111; font-size: clamp(22px, 2.15vw, 29px); font-weight: 600; line-height: 1.4; letter-spacing: -.025em; }
+
+.education { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr); gap: 8%; padding: 16px 5% 100px; }
+.education-timeline { max-width: 760px; margin: 0 0 0 7px; padding: 0 0 0 32px; border-left: 1px solid #c9c9c9; }
+.education-timeline li { position: relative; padding: 0 0 44px; }
+.education-timeline li:last-child { padding-bottom: 0; }
+.education-cap { position: absolute; left: -47px; top: 0; width: 28px; height: 28px; padding: 3px; background: #f8f8f6; color: #111; }
+.education-entry { display: flex; justify-content: space-between; gap: 16px; }
+.education-entry h3 { font-size: clamp(18px, 1.6vw, 22px); font-weight: 700; letter-spacing: -.025em; line-height: 1.4; }
+.education-entry p { margin-top: 5px; color: #555; font-size: 16px; }
+.education-date { padding-top: 3px; color: #666; font-size: 15px; white-space: nowrap; }
+
+.site-footer { background: #111; color: #fff; }
+.footer-inner { max-width: 1440px; margin: auto; padding: 72px 5% 28px; }
+.footer-main { display: flex; justify-content: space-between; gap: 60px; padding-bottom: 84px; }
+.footer-mark { font-family: "Space Grotesk", Manrope, sans-serif; font-size: 32px; font-weight: 700; letter-spacing: -.04em; }
+.footer-links { display: flex; gap: clamp(52px, 8vw, 120px); }
+.footer-links div { display: flex; flex-direction: column; align-items: flex-start; gap: 13px; }
+.footer-links h2 { margin-bottom: 10px; color: #aaa; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.footer-links a { color: #eee; font-size: 15px; }
+.footer-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 25px; border-top: 1px solid #555; color: #bbb; font-size: 13px; }
+.site-footer a:focus-visible { outline-color: #fff; }
+
+dialog { width: min(90vw, 380px); margin: auto; padding: 28px; border: 1px solid #ddd; border-radius: 16px; box-shadow: 0 20px 60px rgb(0 0 0 / 18%); }
+dialog::backdrop { background: rgb(0 0 0 / 50%); }
+dialog h2 { font-size: 24px; font-weight: 700; }
+dialog p { margin-top: 12px; color: #444; }
+dialog button { margin-top: 24px; padding: 10px 20px; border-radius: 6px; background: #111; color: white; }
+
+@media (max-width: 760px) {
+  header { padding-block: 24px; }
+  header nav { font-size: 14px; column-gap: 14px; }
+  main { padding-top: 8px; }
+  .hero { border-radius: 28px; }
+  .portrait { position: relative; width: 100%; height: 350px; }
+  .portrait img { object-position: center 57%; }
+  .portrait::after { background: linear-gradient(180deg, transparent 55%, #000 100%); }
+  .hero-content { margin-left: 0; padding: 0 24px 30px; }
+  h1 { font-size: clamp(30px, 8.5vw, 58px); }
+  .specialty { margin-top: 12px; font-size: clamp(18px, 4.6vw, 27px); }
+  .location { font-size: 18px; }
+  .contact { margin-top: 26px; }
+  .actions { gap: 12px; }
+  .actions button, .actions a { font-size: 17px; }
+  .about { grid-template-columns: 1fr; gap: 28px; padding: 70px 4% 58px; }
+  .about-copy { font-size: 17px; line-height: 1.7; }
+  .education { grid-template-columns: 1fr; gap: 32px; padding: 0 4% 80px; }
+  .education-entry { display: block; }
+  .education-date { display: block; margin-top: 8px; }
+  .footer-inner { padding: 58px 6% 28px; }
+  .footer-main { flex-direction: column; gap: 48px; padding-bottom: 66px; }
+  .footer-links { gap: clamp(36px, 10vw, 80px); }
+  .footer-bottom { flex-direction: column; gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .header-brand span, .header-brand::after { transition: none; }
+}
